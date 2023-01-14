@@ -1,12 +1,11 @@
 
 public class Customer {
-	private static int id;
+	private int id;
 	private String fName;
 	private String lName;
 	private String email;
 	private String mobileNo;
 	
-	public Customer() {};
 	public Customer(String _fName, String _lName, String _email, String _mobileNo) {
 		fName = _fName;
 		lName = _lName;
@@ -14,8 +13,20 @@ public class Customer {
 		mobileNo = _mobileNo;
 	}
 	
+	public int getId() {
+		return id;
+	}
+	
 	public String getName() {
 		return fName + " " + lName;
+	}
+	
+	public String getFName() {
+		return fName;
+	}
+	
+	public String getLName() {
+		return lName;
 	}
 	
 	public String getEmail() {
@@ -27,8 +38,10 @@ public class Customer {
 	}
 	
 	public boolean addCustomer(){
+		System.out.println("Please wait!! Signing up");
 		boolean flag = false;
-		
+		CustomerDAO c = new CustomerDAO(this);
+		flag = c.addCustomer();
 		return flag;
 	}
 }

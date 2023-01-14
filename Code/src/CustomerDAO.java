@@ -1,4 +1,3 @@
-import java.sql.Connection;
 import java.sql.*;
 
 public class CustomerDAO {
@@ -8,21 +7,25 @@ public class CustomerDAO {
 		this.customer = customer;
 		try {
 			con = DBConnection.connect();
-			String query = "insert into customer('email', 'fName', 'lName', 'mobileNo') values(?,?,?,?)";
-			PreparedStatement st = con.prepareStatement(query);
-			ResultSet rs = st.executeQuery(query);
-			
-			while(rs.next()) {
-				String name = rs.getString(3) + rs.getString(4);
-				String email = rs.getString(2);
-				System.out.println("name: " + name + "\nemail: " + email);
-				
-				System.out.println();
-			}
-			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	public boolean addCustomer() {
+		boolean flag = false;
+		String query = "insert into customer(email, first_name, last_name, mobile_no) values(?,?,?,?)";
+		try (PreparedStatement p = con.prepareStatement(query)) {
+			p.setString(1, customer.getEmail());
+			p.setString(2, customer.getFName());
+			p.setString(3, customer.getLName());
+			p.setString(4, customer.getMobileNo());
+			
+			p.execute();
+			flag = true;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return flag;
+	}
 }
