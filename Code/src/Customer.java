@@ -6,6 +6,7 @@ public class Customer {
 	private String email;
 	private String mobileNo;
 	
+	public Customer() {};
 	public Customer(String _fName, String _lName, String _email, String _mobileNo) {
 		fName = _fName;
 		lName = _lName;
