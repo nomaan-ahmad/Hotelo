@@ -5,12 +5,19 @@ public class Customer {
 	private String lName;
 	private String email;
 	private String mobileNo;
+	private String password;
 	
-	public Customer(String _fName, String _lName, String _email, String _mobileNo) {
+	public Customer(String _email, String _password) {
+		email = _email;
+		password = _password;
+		
+	}
+	public Customer(String _fName, String _lName, String _email, String _mobileNo, String _password) {
 		fName = _fName;
 		lName = _lName;
 		email = _email;
 		mobileNo = _mobileNo;
+		password = _password;
 	}
 	
 	public int getId() {
@@ -37,11 +44,23 @@ public class Customer {
 		return mobileNo;
 	}
 	
+	public String getPassword() {
+		return password;
+	}
+	
 	public boolean addCustomer(){
 		System.out.println("Please wait!! Signing up");
 		boolean flag = false;
 		CustomerDAO c = new CustomerDAO(this);
 		flag = c.addCustomer();
+		return flag;
+	}
+	
+	public boolean verifyCustomer() {
+		System.out.println("Please wait, we are verifying your credentials");
+		boolean flag = false;
+		CustomerDAO c = new CustomerDAO(this);
+		flag = c.verifyCustomer();
 		return flag;
 	}
 }
