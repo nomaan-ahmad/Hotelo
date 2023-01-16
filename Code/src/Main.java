@@ -104,7 +104,6 @@ public class Main {
 		System.out.println("Welcome to HOTELO!.....");
 		
 		System.out.println("\n-------------------------------------\n");
-		
-		if (login()) System.out.println("login successfully");
+		login();
 	}
 }
