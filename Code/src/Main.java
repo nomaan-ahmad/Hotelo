@@ -103,18 +103,16 @@ public class Main {
 //		return flag;
 //	}
 	
-	
 	public static void main(String[] args) {
 		System.out.println("Welcome to HOTELO!.....");
-		System.out.println("\n-------------------------------------\n");
-		
+		System.out.println("\n-------------------------------------");
 		System.out.println("You want to login? If new user press 2 for sign up");
-		
 		/*
 		 * 1. Login
 		 * 2. SignUp
 		 * 3. Exit
 		 */
+		
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
 			boolean flag = true;
 			
@@ -142,8 +140,10 @@ public class Main {
 				}else if(option == 2) {
 					// option == 2 for sign up module
 					System.out.println("\nYou opted for signup");
+					SignupModule.signUp();
 					
 				}else {
+					// option == 3 for Exit
 					System.out.println("\nExiting from the application");
 					flag = false; // exit
 				}

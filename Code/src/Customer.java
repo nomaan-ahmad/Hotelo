@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Customer {
 	private int id;
@@ -7,17 +9,27 @@ public class Customer {
 	private String mobileNo;
 	private String password;
 	
-	public Customer(String _email, String _password) {
-		email = _email;
-		password = _password;
-		
+	public Customer() {}
+	
+	public Customer returnCustomer() {
+		return this;
 	}
-	public Customer(String _fName, String _lName, String _email, String _mobileNo, String _password) {
-		fName = _fName;
-		lName = _lName;
-		email = _email;
-		mobileNo = _mobileNo;
-		password = _password;
+	public void askDetails() {
+		System.out.println("We will ask few information before proceeding.");
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+			System.out.println("First name ?");
+			fName = br.readLine();
+			System.out.println("Last name?");
+			lName = br.readLine();
+			System.out.println("email ID :");
+			email = br.readLine();
+			System.out.println("Mobile number :");
+			mobileNo = br.readLine();
+			System.out.println("Set a good password");
+			password = br.readLine();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public int getId() {
