@@ -3,6 +3,13 @@ import java.sql.*;
 public class CustomerDAO {
 	private Customer customer;
 	Connection con;
+	public CustomerDAO() {
+		try {
+			if (con == null) con = DBConnection.connect();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public CustomerDAO(Customer customer) {
 		this.customer = customer;
 		try {
@@ -12,19 +19,18 @@ public class CustomerDAO {
 		}
 	}
 	
-	public boolean verifyCustomer() {
-		boolean flag = false;
+	public boolean verifyCustomer(String email, String password) {
 		String query = "select first_name, last_name from customer where email = ? and password = ?";
 		try (PreparedStatement pt = con.prepareStatement(query)) {
-			pt.setString(1, customer.getEmail());
-			pt.setString(2, customer.getPassword());
+			pt.setString(1, email);
+			pt.setString(2, password);
 			
 			ResultSet rs = pt.executeQuery();
-			if (rs.next()) flag = true;
+			if (rs.next()) return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return flag;
+		return false;
 	}
 	
 	public boolean addCustomer() {

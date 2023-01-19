@@ -48,19 +48,11 @@ public class Customer {
 		return password;
 	}
 	
-	public boolean addCustomer(){
-		System.out.println("Please wait!! Signing up");
-		boolean flag = false;
-		CustomerDAO c = new CustomerDAO(this);
-		flag = c.addCustomer();
-		return flag;
-	}
-	
-	public boolean verifyCustomer() {
-		System.out.println("Please wait, we are verifying your credentials");
-		boolean flag = false;
-		CustomerDAO c = new CustomerDAO(this);
-		flag = c.verifyCustomer();
-		return flag;
-	}
+//	public boolean addCustomer(){
+//		System.out.println("Please wait!! Signing up");
+//		boolean flag = false;
+//		CustomerDAO c = new CustomerDAO(this);
+//		flag = c.addCustomer();
+//		return flag;
+//	}
 }
