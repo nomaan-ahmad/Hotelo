@@ -4,7 +4,7 @@ public class CustomerDAO {
 	Connection con;
 	public CustomerDAO() {
 		try {
-			if (con == null) con = DBConnection.connect();
+			con = DBConnection.connect();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

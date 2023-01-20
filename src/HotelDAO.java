@@ -1,9 +1,9 @@
 import java.sql.*;
 
 public class HotelDAO {
-	private Connection con;
+	private final Connection con;
 	HotelDAO() {
-		if (con == null) con = DBConnection.connect();
+		con = DBConnection.connect();
 	}
 	
 	// feature to print hotels filtered by city

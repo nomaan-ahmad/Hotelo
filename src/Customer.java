@@ -10,10 +10,7 @@ public class Customer {
 	private String password;
 	
 	public Customer() {}
-	
-	public Customer returnCustomer() {
-		return this;
-	}
+
 	public void askDetails() {
 		System.out.println("We will ask few information before proceeding.");
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
@@ -35,11 +32,7 @@ public class Customer {
 	public int getId() {
 		return id;
 	}
-	
-	public String getName() {
-		return fName + " " + lName;
-	}
-	
+
 	public String getFName() {
 		return fName;
 	}
