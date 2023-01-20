@@ -1,8 +1,6 @@
 
-public class Hotel {
-	public static boolean bookHotel(Credential cred) {
-		boolean flag = false;
-		System.out.println("Welcome to hotel booking portal..");
+public class UserActions {
+	public static void bookHotel(Credential cred) {
 //		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
 //			String city = null;
 //			boolean loop1 = true;
@@ -12,7 +10,7 @@ public class Hotel {
 //				city = br.readLine();
 //				flag = new HotelDAO().availableByCity(city);
 //				if (flag == false) {
-//					System.out.println("Sorry no room availables for the input city :(");
+//					System.out.println("Sorry no room available for the input city :(");
 //					boolean loop2 = true;
 //					int count2 = 0;
 //					System.out.println("Do you want to search again?");
@@ -33,7 +31,6 @@ public class Hotel {
 //		} catch(Exception e) {
 //			e.printStackTrace();
 //		}
-		return flag;
 	}
 	
 	public static void presentBooking(Credential cred) {

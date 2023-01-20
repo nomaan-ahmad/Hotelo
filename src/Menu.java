@@ -8,12 +8,11 @@ public class Menu {
 		
 		while (flag) {
 			int option = options();
-
 			switch (option) {
-				case 1 -> Hotel.bookHotel(_cred);
-				case 2 -> Hotel.presentBooking(_cred);
-				case 3 -> Hotel.pastBooking(_cred);
-				case 4 -> Hotel.checkout(_cred);
+				case 1 -> UserActions.bookHotel(_cred);
+				case 2 -> UserActions.presentBooking(_cred);
+				case 3 -> UserActions.pastBooking(_cred);
+				case 4 -> UserActions.checkout(_cred);
 				case 5 -> flag = false;
 				default -> System.out.println("Kindly select correct option");
 			}
