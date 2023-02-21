@@ -4,19 +4,14 @@ import java.util.Scanner;
 public class Input {
     public static String line() {
         Scanner in = new Scanner(System.in);
-        String word = in.nextLine();
 
-        // closing resource
-        in.close();
-        return word;
+        return in.nextLine();
     }
 
     public static char singleChar() {
         Scanner in = new Scanner(System.in);
         String word = in.nextLine();
 
-        // closing resource
-        in.close();
         return word.charAt(0);
     }
 
