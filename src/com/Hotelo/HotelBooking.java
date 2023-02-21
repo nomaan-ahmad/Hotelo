@@ -2,9 +2,10 @@ package com.Hotelo;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 
 public class HotelBooking {
-    // make it modular you bitch
+    // make it modular
     private Credential customer;
     HotelBooking(Credential cred) {
         customer = cred;
@@ -17,7 +18,7 @@ public class HotelBooking {
         if (hotels.size() == 0) System.out.println("No rooms available");
 
         boolean loop = true;
-        while (loop) {
+        while (loop && hotels.size() == 0) {
             System.out.println("Sorry! No hotels available for input city.");
             System.out.println("Do you want to search for different city ?");
 
@@ -52,11 +53,9 @@ public class HotelBooking {
         System.out.println("Thank you from Hotel Booking portal");
     }
 
-
-
     // city selection is implemented [*]
-    private Response<String> citySelection() {
-        HashSet<String> cities = new HotelDAO().allCities();
+    public Response<String> citySelection() {
+        HashSet<String> cities = new HotelDAO().availableCity();
         System.out.println("In which city are you planning to say?");
         String city = Input.line();
 
@@ -69,11 +68,44 @@ public class HotelBooking {
         return new Response<>(true, city);
     }
 
-    private void hotelSelection(String city){
+    // Hotel selection is implemented [*]
+    public Response<Integer> hotelSelection(String city){
+        Scanner sc = new Scanner(System.in);
         // this method is to select which hotel user want to stay in the selected city
-    }
-    private void roomTypeAvailable(int hotelID) {
+        List<Hotels> allHotel = new HotelDAO().hotelsAvailableInCity(city);
+        HashSet<Integer> allHotelID = new HashSet<>();
+        for (Hotels h : allHotel) allHotelID.add(h.getHotelID());
 
+        // Printing all available hotels in selected city
+        System.out.println("All available hotels in " + city + " are as follows :");
+        System.out.println(allHotel);
+
+        // taking input from the user
+        System.out.println("Kindly select the hotels by typing corresponding HotelID");
+        boolean flag = false;
+        int hotelID = -1;
+        while (!flag) {
+            try {
+                String input = Input.line().trim();
+                if (input.toLowerCase().charAt(0) == 'x') {
+                    flag = true;
+                    return new Response<>(false, null);
+                }
+                hotelID = Integer.parseInt(input);
+                if (allHotelID.contains(hotelID)) flag = true;
+                else System.out.println("Type correct HotelID");
+            } catch (NumberFormatException e) {
+                if (flag) break;
+                System.out.println("Wrong input format");
+                System.out.println("Try again");
+            }
+        }
+
+        return new Response<>(true, hotelID);
+    }
+
+    // Room type selection []
+    private void roomTypeSelection(int hotelID) {
         System.out.println("Enter which type of room you want to relax");
 
         List<Rooms> rooms = new HotelDAO().roomsTypeAvailable(hotelID);
@@ -82,7 +114,6 @@ public class HotelBooking {
         for (Rooms r : rooms) roomID.add(r.getRoomID());
 
         String choice = Input.line();
-
 
     }
 
