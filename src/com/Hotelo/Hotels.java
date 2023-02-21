@@ -39,4 +39,11 @@ public class Hotels {
     public void setStars(int stars) {
         this.stars = stars;
     }
+
+    /************************* toString ************************ */
+
+    @Override
+    public String toString() {
+        return "" + hotelID + ": " + hotelName;
+    }
 }
