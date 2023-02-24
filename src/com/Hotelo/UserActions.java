@@ -31,6 +31,14 @@ public class UserActions {
 			return;
 		}
 
+		// Taking input for the room type
+		Response<Integer> room = hb.roomTypeSelection(hotel.response);
+		if (!room.status) {
+			System.out.println("You didn't select room to proceed further..");
+			System.out.println("Thank you for using our booking portal");
+			return;
+		}
+
 
 		System.out.println("Thank you for using our booking portal");
 	}

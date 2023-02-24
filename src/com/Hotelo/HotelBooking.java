@@ -104,7 +104,7 @@ public class HotelBooking {
     }
 
     // Room type selection []
-    private Response<Integer> roomTypeSelection(int hotelID) {
+    public Response<Integer> roomTypeSelection(int hotelID) {
         System.out.println("Select the room you want to relax in :)");
 
         List<Rooms> rooms = new HotelDAO().roomsTypeAvailable(hotelID);
