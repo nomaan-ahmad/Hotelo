@@ -40,7 +40,6 @@ public class HotelBooking {
                 if (input.toLowerCase().charAt(0) == 'x') break;
                 if (hotels.contains(Integer.valueOf(input))) {
                     int hotelID = Integer.parseInt(input);
-                    //Response<String> roomType = roomTypeAvailable(hotelID);
                     //if (!roomType.status) break;
 
                 }else {
@@ -105,16 +104,41 @@ public class HotelBooking {
     }
 
     // Room type selection []
-    private void roomTypeSelection(int hotelID) {
-        System.out.println("Enter which type of room you want to relax");
+    private Response<Integer> roomTypeSelection(int hotelID) {
+        System.out.println("Select the room you want to relax in :)");
 
         List<Rooms> rooms = new HotelDAO().roomsTypeAvailable(hotelID);
-        List<Integer> roomID = new ArrayList<>();
+        HashSet<Integer> roomIDs = new HashSet<>();
 
-        for (Rooms r : rooms) roomID.add(r.getRoomID());
+        System.out.println("Room ID | Room Type");
+        for (Rooms r : rooms) {
+            System.out.println(r.getRoomID() + " " + r.getType());
+            roomIDs.add(r.getRoomID());
+        }
 
-        String choice = Input.line();
+        boolean flag = false;
+        int roomID = -1;
+        while (!flag) {
+            try {
+                System.out.println("Select room by typing its RoomID");
+                String choice = Input.line();
+                if (choice.toLowerCase().charAt(0) == 'x') {
+                    flag = true;
+                    return new Response<>(false, null);
+                }
+                roomID = Integer.parseInt(choice);
+                if (roomIDs.contains(roomID)) flag = true;
+                else {
+                    System.out.println("kindly, select correct room ID");
+                    System.out.println("If you want to exit, then type 'X'");
+                }
+            } catch (Exception e) {
+                System.out.println("Please don't type anything than room ID");
+                System.out.println("If you want to exit, then type 'X'");
+            }
+        }
 
+        return new Response<>(true, roomID);
     }
 
     private void bookRoom() {
