@@ -1,4 +1,7 @@
-package com.Hotelo;
+package com.Hotelo.main;
+import com.Hotelo.feature.login.LoginModule;
+import com.Hotelo.feature.signup.SignupModule;
+
 import java.util.Scanner;
 
 public class Main {

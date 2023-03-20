@@ -1,4 +1,6 @@
-package com.Hotelo;
+package com.Hotelo.authentication;
+
+import com.Hotelo.dao.CustomerDAO;
 
 public class Authentication {
 	public static boolean authorize(String username, String password) {

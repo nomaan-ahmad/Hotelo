@@ -1,4 +1,6 @@
-package com.Hotelo;
+package com.Hotelo.userInput;
+
+import com.Hotelo.authentication.Credential;
 
 public class Menu {
 	Credential cred;

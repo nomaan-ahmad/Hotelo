@@ -1,9 +1,10 @@
-package com.Hotelo;
+package com.Hotelo.test;
+
+import com.Hotelo.dao.HotelDAO;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
 
 public class TestClass {
     public static void main(String[] args) {

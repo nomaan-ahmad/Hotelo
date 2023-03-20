@@ -1,4 +1,11 @@
-package com.Hotelo;
+package com.Hotelo.feature.booking;
+
+import com.Hotelo.authentication.Credential;
+import com.Hotelo.userInput.Input;
+import com.Hotelo.userInput.Response;
+import com.Hotelo.dao.HotelDAO;
+import com.Hotelo.model.Hotels;
+import com.Hotelo.model.Rooms;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -9,7 +16,7 @@ import java.util.List;
 public class HotelBooking {
     // make it modular
     private final Credential customer;
-    HotelBooking(Credential cred) {
+    public HotelBooking(Credential cred) {
         customer = cred;
     }
 

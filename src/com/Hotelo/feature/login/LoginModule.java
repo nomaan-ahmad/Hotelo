@@ -1,4 +1,8 @@
-package com.Hotelo;
+package com.Hotelo.feature.login;
+
+import com.Hotelo.authentication.Credential;
+import com.Hotelo.userInput.Menu;
+import com.Hotelo.authentication.Authentication;
 
 import java.util.Scanner;
 

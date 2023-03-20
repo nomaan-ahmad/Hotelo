@@ -1,4 +1,8 @@
-package com.Hotelo;
+package com.Hotelo.feature.signup;
+
+import com.Hotelo.model.Customer;
+import com.Hotelo.dao.CustomerDAO;
+
 public class SignupModule {
 	public static void signUp() {
 		Customer cus = new Customer();

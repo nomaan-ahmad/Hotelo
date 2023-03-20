@@ -1,4 +1,4 @@
-package com.Hotelo;
+package com.Hotelo.model;
 
 public class Rooms {
     private int roomID;

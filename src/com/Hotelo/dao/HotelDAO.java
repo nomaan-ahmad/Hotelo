@@ -1,4 +1,8 @@
-package com.Hotelo;
+package com.Hotelo.dao;
+
+import com.Hotelo.connection.DBConnection;
+import com.Hotelo.model.Hotels;
+import com.Hotelo.model.Rooms;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -7,7 +11,7 @@ import java.util.List;
 
 public class HotelDAO {
 	private final Connection con;
-	HotelDAO() {
+	public HotelDAO() {
 		con = DBConnection.connect();
 	}
 

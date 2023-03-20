@@ -1,4 +1,4 @@
-package com.Hotelo;
+package com.Hotelo.model;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

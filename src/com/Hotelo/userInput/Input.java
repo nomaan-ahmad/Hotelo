@@ -1,4 +1,4 @@
-package com.Hotelo;
+package com.Hotelo.userInput;
 import java.util.Scanner;
 
 public class Input {

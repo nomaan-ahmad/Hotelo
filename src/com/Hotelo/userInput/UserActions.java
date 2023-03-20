@@ -1,4 +1,8 @@
-package com.Hotelo;
+package com.Hotelo.userInput;
+
+import com.Hotelo.authentication.Credential;
+import com.Hotelo.dao.HotelDAO;
+import com.Hotelo.feature.booking.HotelBooking;
 
 public class UserActions {
 	// Hotel booking feature [*]

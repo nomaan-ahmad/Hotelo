@@ -1,4 +1,4 @@
-package com.Hotelo;
+package com.Hotelo.connection;
 import java.sql.*;
 
 public class DBConnection {
