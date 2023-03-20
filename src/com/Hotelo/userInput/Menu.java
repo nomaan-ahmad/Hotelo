@@ -14,14 +14,17 @@ public class Menu {
 		boolean flag = true;
 		while (flag) {
 			System.out.println("\nSelect options (between 1 to 5)");
-			System.out.println("1. Book a hotel\n2. Present Bookings\n3. Past Bookings\n4. Checkout\n5. Exit\n");
+			System.out.println("1. Book a hotel\n2. Present Bookings\n3. Past Bookings\n4. Checkout\n5. Logout\n");
 			int option = Input.singleChar() - '0';
 			switch (option) {
 				case 1 -> UserActions.bookHotel(cred);
 				case 2 -> UserActions.presentBooking(cred);
 				case 3 -> UserActions.pastBooking(cred);
 				case 4 -> UserActions.checkout(cred);
-				case 5 -> flag = false;
+				case 5 -> {
+					flag = false;
+					System.out.println("Logging out");
+				}
 				default -> System.out.println("Kindly select correct option");
 			}
 		}

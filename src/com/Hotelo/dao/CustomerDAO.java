@@ -1,4 +1,5 @@
 package com.Hotelo.dao;
+
 import com.Hotelo.model.Customer;
 import com.Hotelo.connection.DBConnection;
 
