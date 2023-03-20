@@ -6,7 +6,7 @@ public class SignupModule {
 		System.out.println("We are saving your details. Please wait...");
 		boolean flag = new CustomerDAO().addCustomer(cus);
 		
-		if (flag) System.out.println("Wohoo! Account made successfully...");
-		else System.out.println("Oops! Some error occured :(");
+		if (flag) System.out.println("Wohooo! Account made successfully...");
+		else System.out.println("Oops! Some error occurred :(");
 	}
 }

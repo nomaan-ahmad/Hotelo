@@ -1,55 +1,16 @@
 package com.Hotelo;
-import java.util.ArrayList;
+
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 
 public class HotelBooking {
     // make it modular
-    private Credential customer;
+    private final Credential customer;
     HotelBooking(Credential cred) {
         customer = cred;
-        System.out.println("Welcome to hotel booking portal..");
-
-        System.out.println("In which city are you planning to say?");
-        String city = Input.line();
-
-        HashSet<Integer> hotels = new HotelDAO().availableByCity(city);
-        if (hotels.size() == 0) System.out.println("No rooms available");
-
-        boolean loop = true;
-        while (loop && hotels.size() == 0) {
-            System.out.println("Sorry! No hotels available for input city.");
-            System.out.println("Do you want to search for different city ?");
-
-            char ch = Input.yesOrNo();
-            if (ch == 'y') {
-                city = Input.line();
-
-                hotels = new HotelDAO().availableByCity(city);
-            } else loop = false;
-        }
-
-        if (hotels.size() > 0) {
-            System.out.println("Please type hotelID in order to " +
-                    "proceed with hotel booking or enter 'X' to exit");
-
-            while (true) {
-                boolean flag = true;
-                String input = Input.line();
-                if (input.toLowerCase().charAt(0) == 'x') break;
-                if (hotels.contains(Integer.valueOf(input))) {
-                    int hotelID = Integer.parseInt(input);
-                    //if (!roomType.status) break;
-
-                }else {
-                    System.out.println("Kindly enter hotelID " +
-                            "from the above available hotel list");
-                }
-            }
-        }
-
-        System.out.println("Thank you from Hotel Booking portal");
     }
 
     // city selection is implemented [*]
@@ -69,7 +30,6 @@ public class HotelBooking {
 
     // Hotel selection is implemented [*]
     public Response<Integer> hotelSelection(String city){
-        Scanner sc = new Scanner(System.in);
         // this method is to select which hotel user want to stay in the selected city
         List<Hotels> allHotel = new HotelDAO().hotelsAvailableInCity(city);
         HashSet<Integer> allHotelID = new HashSet<>();
@@ -103,7 +63,7 @@ public class HotelBooking {
         return new Response<>(true, hotelID);
     }
 
-    // Room type selection []
+    // Room type selection [*]
     public Response<Integer> roomTypeSelection(int hotelID) {
         System.out.println("Select the room you want to relax in :)");
 
@@ -141,7 +101,18 @@ public class HotelBooking {
         return new Response<>(true, roomID);
     }
 
-    private void bookRoom() {
+    // Booking feature [*]
+    public boolean bookRoom(int roomID) {
+        System.out.println("Booking process initialised");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Asia/Kolkata"));
+        String dateTime = dtf.format(zdt);
 
+        if(new HotelDAO().bookRoom(roomID, customer.email, dateTime)){
+            System.out.println("Booked successfully");
+            return true;
+        }else System.out.println("Something unexpected happened");
+
+        return false;
     }
 }

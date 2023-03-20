@@ -1,8 +1,7 @@
 package com.Hotelo;
 
-import java.util.Scanner;
-
 public class UserActions {
+	// Hotel booking feature [*]
 	public static void bookHotel(Credential cred) {
 		System.out.println("""
 				Welcome to Hotel booking portal!!
@@ -39,8 +38,13 @@ public class UserActions {
 			return;
 		}
 
+		boolean booked = hb.bookRoom(room.response);
+		if (booked) {
+			System.out.println("""
+					You can check your booking from Present booking portal""");
+		}
+		else System.out.println("Unfortunately, hotel is not booked. Please try again");
 
-		System.out.println("Thank you for using our booking portal");
 	}
 	
 	public static void presentBooking(Credential cred) {

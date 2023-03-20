@@ -54,12 +54,5 @@ public class Customer {
 	public String getPassword() {
 		return password;
 	}
-	
-//	public boolean addCustomer(){
-//		System.out.println("Please wait!! Signing up");
-//		boolean flag = false;
-//		CustomerDAO c = new CustomerDAO(this);
-//		flag = c.addCustomer();
-//		return flag;
-//	}
+
 }

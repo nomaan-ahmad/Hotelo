@@ -1,7 +1,5 @@
 package com.Hotelo;
 
-import com.Hotelo.Authentication;
-
 import java.util.Scanner;
 
 public class LoginModule {
