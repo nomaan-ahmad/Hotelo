@@ -11,6 +11,6 @@ public class SignupModule {
 		boolean flag = new CustomerDAO().addCustomer(cus);
 		
 		if (flag) System.out.println("Wohooo! Account made successfully...");
-		else System.out.println("Oops! Some error occurred :(");
+		else System.err.println("Oops! Some error occurred :(");
 	}
 }

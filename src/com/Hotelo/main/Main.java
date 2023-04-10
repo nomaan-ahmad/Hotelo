@@ -28,7 +28,6 @@ public class Main {
 			int count = 3;
 			while(count > 0 && !(option == 1 || option == 2 || option == 3)) {
 				System.out.println("\nTry again and choose correct options)");
-
 				System.out.println("1. Login\n2. Signup\n3. EXIT");
 				option = in.nextLine().charAt(0) - '0';
 
@@ -38,7 +37,7 @@ public class Main {
 			if (option == 1) {
 				// option == 1 for login module
 				System.out.println("\nYou opted for login");
-				new LoginModule();
+				LoginModule.login();
 
 			}else if(option == 2) {
 				// option == 2 for sign up module
